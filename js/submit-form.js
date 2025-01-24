@@ -17,10 +17,6 @@ $(function () {
             const toast = new bootstrap.Toast($('.success_msg')[0]);
             const errtoast = new bootstrap.Toast($('.error_msg')[0]);
 
-            const myHeaders = new Headers();
-            myHeaders.append("Authorization", "Bearer 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");
-            myHeaders.append("Content-Type", "application/json");
-
             $.ajax({
               "url": "https://sendmail.obinn.cz/",
               "method": "POST",

@@ -13,23 +13,32 @@ $(function () {
             event.stopPropagation();
         } else {
             event.preventDefault();
-            $('.submit_form').html('Sending...');
+            $('.submit_form').html('Odesílá se...');
             const toast = new bootstrap.Toast($('.success_msg')[0]);
             const errtoast = new bootstrap.Toast($('.error_msg')[0]);
-            var formData = forms.serialize();
+
+            const myHeaders = new Headers();
+            myHeaders.append("Authorization", "Bearer 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");
+            myHeaders.append("Content-Type", "application/json");
+
             $.ajax({
-                type: "POST",
-                url: "php/form_process.php",
-                data: formData,
-                success: function (response) {
-                    if (response == 'success') {
-                        toast.show()
-                        $('.submit_form').html('Submit');
-                    } else {
-                        errtoast.show()
-                        $('.submit_form').html('Submit');
-                    }
+              "url": "https://sendmail.obinn.cz/",
+              "method": "POST",
+              "timeout": 0,
+              "processData": false,
+              "mimeType": "multipart/form-data",
+              "contentType": false,
+              "data": form,
+
+              success: function (response) {
+                if (response == 'success') {
+                    toast.show()
+                    $('.submit_form').html('Submit');
+                } else {
+                    errtoast.show()
+                    $('.submit_form').html('Submit');
                 }
+              },
             });
         }
 

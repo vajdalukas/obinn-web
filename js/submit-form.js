@@ -18,16 +18,15 @@ $(function () {
           const errtoast = new bootstrap.Toast($('.error_msg')[0]);
 
           $.ajax({
-            "url": "https://sendmail.obinn.cz/",
-            "method": "POST",
-            "timeout": 0,
-            "processData": false,
-            "mimeType": "multipart/form-data",
-            "contentType": false,
-            "data": form,
+            url: "https://sendmail.obinn.cz/",
+            method: "POST",
+            timeout: 0,
+            processData: false,
+            mimeType: "multipart/form-data",
+            data: form.serialize(),
 
             success: function (response) {
-              if (response == 'success') {
+              if (response === "OK") {
                   toast.show()
                   form.hide()
               } else {

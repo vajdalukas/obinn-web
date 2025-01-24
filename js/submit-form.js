@@ -35,6 +35,11 @@ $(function () {
                   $('.submit_form').html('Submit');
               }
             },
+
+            error: function (response) {
+              errtoast.show()
+              $('.submit_form').html('Submit');
+            },
           });
       }
 

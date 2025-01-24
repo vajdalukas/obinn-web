@@ -29,16 +29,16 @@ $(function () {
             success: function (response) {
               if (response == 'success') {
                   toast.show()
-                  $('.submit_form').html('Submit');
+                  form.hide()
               } else {
                   errtoast.show()
-                  $('.submit_form').html('Submit');
+                  $('.submit_form').html('Odeslat zprávu');
               }
             },
 
             error: function (response) {
               errtoast.show()
-              $('.submit_form').html('Submit');
+              $('.submit_form').html('Odeslat zprávu');
             },
           });
       }

@@ -239,6 +239,10 @@ a {
     box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.5) !important;
 }
 
+.border-top {
+  border-top: solid 1px #505050 !important;
+}
+
 .border-bottom {
     border-bottom: solid 1px #505050 !important;
 }

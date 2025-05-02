@@ -1,0 +1,107 @@
+/* Overlay pozadí */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* Poloprůhledné černé pozadí */
+  z-index: 1050; /* Zajistí zobrazení nad ostatním obsahem */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Kontejner pro banner s poměrem 16:9 */
+.banner-container {
+  position: relative;
+  width: 80vw;
+  max-width: 1280px;
+  max-height: 80vh;
+  aspect-ratio: 16 / 9; /* Moderní způsob nastavení poměru stran */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Fallback pro prohlížeče bez podpory aspect-ratio */
+@supports not (aspect-ratio: 16/9) {
+  .banner-container::before {
+    content: "";
+    display: block;
+    padding-top: 56.25%; /* 9/16 = 0.5625 = 56.25% */
+  }
+  .banner-container > a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+/* Obrázek uvnitř banneru */
+.banner-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Zajistí správné vyplnění plochy bez deformace */
+  display: block;
+  border: 1pt solid var(--gray-color);
+}
+
+/* Odkaz přes celou plochu banneru */
+.banner-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Tlačítko pro zavření */
+.close-btn {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  z-index: 1001;
+  color: white;
+}
+
+.close-btn:hover {
+  color: var(--accent-color);
+}
+
+.overlay-toggle {
+  display: none; /* Skrýt checkbox */
+}
+
+/* Skrýt overlay, když je checkbox zaškrtnutý */
+.overlay-toggle:checked + .overlay {
+  display: none;
+}
+
+/* Styl pro portrétní zobrazení */
+@media (orientation: portrait) {
+  .overlay {
+    position: fixed;
+    top: unset;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 1050; /* Zajistí zobrazení nad ostatním obsahem */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.2em 0 3em;
+  }
+
+  .close-btn {
+    top: 4pt;
+    right: 0;
+  }
+}

@@ -17,6 +17,8 @@
 
 body {
     background-color: var(--secondary-dark-color);
+    font-size: clamp(1rem, 0.92rem + 0.35vw, 1.175rem);
+    line-height: 1.6;
 }
 
 

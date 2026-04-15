@@ -1,10 +1,8 @@
 $(function () {
   'use strict';
 
-  // Ambil semua formulir yang ingin kita terapkan gaya validasi kustom Bootstrap
   const forms = $('.needs-validation');
 
-  // Loop melalui formulir dan mencegah pengiriman
   forms.on('submit', function (event) {
       const form = $(this);
 
